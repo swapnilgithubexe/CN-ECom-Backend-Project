@@ -2,6 +2,11 @@ import express from "express";
 
 const server = express();
 
+//Routes
+import productRouter from "./src/features/product/product.routes.js";
+
+server.get("/", productRouter);
+
 
 server.get("/", (req, res) => {
   res.send("Welcome Guys!")
