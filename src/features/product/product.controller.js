@@ -6,7 +6,10 @@ export default class ProductController {
     res.status(200).send(products);
   }
 
-  addProduct(req, res) { }
+  addProduct(req, res) {
+    res.status(200).send("Post request received!")
+
+  }
 
   rateProduct(req, res) { }
 
