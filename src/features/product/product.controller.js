@@ -13,7 +13,8 @@ export default class ProductController {
       sizes: sizes.split(","),
       imageUrl: req.file.filename,
     };
-    ProductModel.addNewProduct(newProduct)
+    const newRecord = ProductModel.addNewProduct(newProduct);
+    res.status(201).send("New Product Added!")
   }
 
   rateProduct(req, res) { }
