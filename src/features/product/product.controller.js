@@ -7,8 +7,13 @@ export default class ProductController {
   }
 
   addProduct(req, res) {
-    res.status(200).send("Post request received!")
-
+    const { name, price, sizes } = req.body;
+    const newProduct = {
+      name, price: parseFloat(price),
+      sizes: sizes.split(","),
+      imageUrl: req.file.filename,
+    };
+    ProductModel.addNewProduct(newProduct)
   }
 
   rateProduct(req, res) { }
