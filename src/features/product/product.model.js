@@ -21,12 +21,14 @@ export default class ProductModel {
 
   static getSingleProduct(id) {
     const product = products.find((product) => product.id === Number(id));
-
-
-    // if (!product) {
-    //   return "No Product Found"
-    // }
     return product;
+  }
+
+  static filter(minPrice, maxPrice, category) {
+    const results = products.filter((product) => {
+      return product.price >= minPrice && product.price <= maxPrice && product.category == category
+    })
+    return results;
   }
 }
 
