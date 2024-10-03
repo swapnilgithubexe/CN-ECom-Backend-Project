@@ -31,6 +31,11 @@ export default class ProductController {
   }
 
   filteredProducts(req, res) {
-    const { } = req.body;
+    const minPrice = req.query.minPrice;
+    const maxPrice = req.query.maxPrice;
+    const category = req.query.category;
+
+    const result = ProductModel.filter(minPrice, maxPrice, category);
+    res.status(200).send(result);
   }
 }
