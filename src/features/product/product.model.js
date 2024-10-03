@@ -25,10 +25,9 @@ export default class ProductModel {
   }
 
   static filter(minPrice, maxPrice, category) {
-    const results = products.filter((product) => {
-      return product.price >= minPrice && product.price <= maxPrice && product.category == category
-    })
-    return results;
+    return products.filter((product) => {
+      return product.price >= minPrice && product.price <= maxPrice && product.category === category;
+    });
   }
 }
 

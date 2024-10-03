@@ -31,11 +31,15 @@ export default class ProductController {
   }
 
   filteredProducts(req, res) {
-    const minPrice = req.query.minPrice;
-    const maxPrice = req.query.maxPrice;
+    console.log("Route hit");  // Add this to check if the route is hit
+
+    const minPrice = Number(req.query.minPrice);
+    const maxPrice = Number(req.query.maxPrice);
     const category = req.query.category;
 
     const result = ProductModel.filter(minPrice, maxPrice, category);
+
     res.status(200).send(result);
   }
+
 }

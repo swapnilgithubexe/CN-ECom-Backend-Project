@@ -6,11 +6,12 @@ const productController = new ProductController();
 
 const router = express.Router();
 
-router.get("/", productController.getAllProducts);
-router.post("/", uploadFile.single("imageUrl"), productController.addProduct);
+// Define the routes under '/products'
+router.get("/", productController.getAllProducts); // This will now be '/products'
+router.post("/", uploadFile.single("imageUrl"), productController.addProduct); // '/products'
 
-router.get("/:id", productController.getOneProduct);
+router.get("/filter", productController.filteredProducts.bind(productController)); // '/products/filter'
 
-router.get("/filter", productController.filteredProducts)
+router.get("/:id", productController.getOneProduct); // '/products/:id'
 
 export default router;
