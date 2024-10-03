@@ -11,4 +11,6 @@ router.post("/", uploadFile.single("imageUrl"), productController.addProduct);
 
 router.get("/:id", productController.getOneProduct);
 
+router.get("/filter", productController.filteredProducts)
+
 export default router;

@@ -29,4 +29,8 @@ export default class ProductController {
       return res.status(200).send(product);
     }
   }
+
+  filteredProducts(req, res) {
+    const { } = req.body;
+  }
 }
