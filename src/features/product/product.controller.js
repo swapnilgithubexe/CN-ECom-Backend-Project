@@ -31,7 +31,6 @@ export default class ProductController {
   }
 
   filteredProducts(req, res) {
-    console.log("Route hit");  // Add this to check if the route is hit
 
     const minPrice = Number(req.query.minPrice);
     const maxPrice = Number(req.query.maxPrice);
