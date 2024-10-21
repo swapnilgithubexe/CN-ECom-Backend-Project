@@ -13,7 +13,7 @@ export default class UserController {
       return res.status(400).send("Invalid Credentials/User not found!")
     }
     else {
-      return res.send("Login successfully!")
+      return res.send("Logged In successfully!")
     }
   }
 }
