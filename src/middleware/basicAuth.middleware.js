@@ -1,4 +1,4 @@
-import UserModel from "../features/user/user.model";
+import UserModel from "../features/user/user.model.js";
 
 
 const basicAuthorizer = (req, res, next) => {
@@ -22,4 +22,6 @@ const basicAuthorizer = (req, res, next) => {
   else {
     return res.status(401).send("Incorrect Credentials");
   }
-}
+};
+
+export default basicAuthorizer;
