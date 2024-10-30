@@ -7,8 +7,6 @@ const jwtAuth = (req, res, next) => {
   const token = req.headers['authorization']
 
   //if no token return error
-  console.log(token);
-
 
   if (!token) {
     return res.status(401).send('Unauthorized')
@@ -17,10 +15,8 @@ const jwtAuth = (req, res, next) => {
   //check token validity
   try {
     const payload = jwt.verify(token, "TELLMEDOYOUBLEED?");
-    console.log(payload);
 
   } catch (error) {
-    console.log(error);
 
     return res.status(401).send("Unauthorized")
   }
