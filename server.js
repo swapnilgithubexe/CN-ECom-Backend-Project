@@ -7,10 +7,10 @@ server.use(bodyParser.json());
 //Routes
 import productRouter from "./src/features/product/product.routes.js";
 import userRouter from "./src/features/user/user.routes.js";
-import basicAuthorizer from "./src/middleware/basicAuth.middleware.js";
+import jwtAuth from "./src/middleware/jwt.middleware.js";
 
 // Mount productRouter on '/products'
-server.use("/products", basicAuthorizer, productRouter);
+server.use("/products", jwtAuth, productRouter);
 server.use("/api/users", userRouter);
 
 server.get("/", (req, res) => {
