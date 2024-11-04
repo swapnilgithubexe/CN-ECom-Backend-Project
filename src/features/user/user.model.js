@@ -30,4 +30,11 @@ var users = [{
   email: "Seller@gmail.com",
   password: "PasswordForSelling",
   type: "seller"
+},
+{
+  id: 2,
+  name: "Customer",
+  email: "customer@gmail.com",
+  password: "Password1",
+  type: "customer"
 }]

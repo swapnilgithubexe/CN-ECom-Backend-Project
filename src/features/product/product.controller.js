@@ -25,7 +25,7 @@ export default class ProductController {
     if (error) {
       return res.status(400).send(error);
     } else {
-      return res.status(200);
+      return res.status(200).send("Rating has been added");
     }
   }
 
