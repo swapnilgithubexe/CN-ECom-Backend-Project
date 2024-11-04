@@ -14,4 +14,6 @@ router.get("/filter", productController.filteredProducts.bind(productController)
 
 router.get("/:id", productController.getOneProduct); // '/products/:id'
 
+router.post("/rate", productController.rateProduct)
+
 export default router;
