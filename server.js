@@ -8,10 +8,12 @@ server.use(bodyParser.json());
 import productRouter from "./src/features/product/product.routes.js";
 import userRouter from "./src/features/user/user.routes.js";
 import jwtAuth from "./src/middleware/jwt.middleware.js";
+import cartRouter from "./src/features/cart/cart.routes.js";
 
 // Mount productRouter on '/products'
 server.use("/products", jwtAuth, productRouter);
 server.use("/api/users", userRouter);
+server.use("api/cartItems", cartRouter)
 
 server.get("/", (req, res) => {
   res.send("Welcome Guys!");
