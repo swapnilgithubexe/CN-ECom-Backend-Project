@@ -6,8 +6,13 @@ export class CartItemsController {
     //took userID from token for security reasons(attackers can't hinder the token which is generated)
     const userID = req.userID;
     CartItemModel.add(productID, userID, quantity)
+
     res.status(201).send("Cart is updated!")
+  }
 
-
+  get(req, res) {
+    const userID = req.userID;
+    const items = CartItemModel.get(userID);
+    return res.status(200).send(items);
   }
 }
