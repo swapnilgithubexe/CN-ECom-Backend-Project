@@ -31,7 +31,6 @@ export default class CartItemModel {
   static get(userID) {
     return cartItems.filter(i => i.userID == userID);
   }
-
 };
 
 var cartItems = [new CartItemModel(1, 2, 1, 1),
