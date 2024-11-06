@@ -13,7 +13,7 @@ import cartRouter from "./src/features/cart/cart.routes.js";
 // Mount productRouter on '/products'
 server.use("/products", jwtAuth, productRouter);
 server.use("/api/users", userRouter);
-server.use("api/cartItems", cartRouter)
+server.use("api/cartItems", jwtAuth, cartRouter)
 
 server.get("/", (req, res) => {
   res.send("Welcome Guys!");
