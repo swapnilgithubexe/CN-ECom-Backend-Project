@@ -14,6 +14,7 @@ const jwtAuth = (req, res, next) => {
   //check token validity
   try {
     const payload = jwt.verify(token, "TELLMEDOYOUBLEED?");
+    req.userID = payload.userID;
 
   } catch (error) {
 
