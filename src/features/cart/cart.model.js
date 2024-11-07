@@ -29,7 +29,7 @@ export default class CartItemModel {
     return cartItem;
   }
   static get(userID) {
-    return cartItems.filter(i => i.userID == userID);
+    return cartItems.filter((i) => i.userID == userID);
   }
 };
 

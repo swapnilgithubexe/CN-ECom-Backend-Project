@@ -33,13 +33,6 @@ var users = [{
 },
 {
   id: 2,
-  name: "Customer",
-  email: "customer@gmail.com",
-  password: "Password1",
-  type: "customer"
-},
-{
-  id: 3,
   name: "swapnil",
   email: "swapnildutta2002@gmail.com",
   password: "Password1",
