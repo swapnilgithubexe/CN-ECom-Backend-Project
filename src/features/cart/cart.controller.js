@@ -13,10 +13,20 @@ export class CartItemsController {
 
   get(req, res) {
     const userID = req.userID;
-    console.log(req.userID);
 
     const items = CartItemModel.get(userID);
 
     return res.status(200).send(items);
+  }
+
+  delete(req, res) {
+    const userID = req.userID;
+    const cartItemID = req.params.id;
+    const result = CartItemModel.delete(cartItemID, userID)
+    if (result) {
+      return res.status(400).send(result)
+    } else {
+      return res.status(200).send("Item removed from the cart!")
+    }
   }
 }
