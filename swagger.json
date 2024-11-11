@@ -16,6 +16,7 @@
   "paths": {
       "/products": {
         "get": {
+          "tags":["Products"],
           "summary": "Get all products",
           "description": "User to get all the products list",
           "security": [{ "JWT": {} }],
@@ -31,6 +32,7 @@
     },
     "/api/users/signin": {
       "post": {
+        "tags":["Users"],
         "summary": "Login",
         "description": "User login to get token",
         "parameters": [
