@@ -6,8 +6,15 @@
     "title": "E-Commerce API"
   },
   "host": "localhost:4000",
+  "securityDefinitions":{
+    "JWT":{
+      "in":"header",
+      "name":"Authorization",
+      "type": "apiKey"
+    }
+  },
   "paths": {
-      "/api/products": {
+      "/products": {
         "get": {
           "summary": "Get all products",
           "description": "User to get all the products list",
