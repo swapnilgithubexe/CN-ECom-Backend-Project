@@ -1,7 +1,43 @@
 {
-  "swagger":"2.0",
-  "info":{
-    "version":"1.0.0",
-    "description": "API for ecommerce application"
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "description": "API for ecommerce application",
+    "title": "E-Commerce API"
+  },
+  "host": "localhost:4000",
+  "paths": {
+    "/api/users/signin": {
+      "post": {
+        "summary": "Login",
+        "description": "User login to get token",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User Creds",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "Password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Incorrect creds"
+          }
+        }
+      }
+    }
   }
 }
