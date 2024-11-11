@@ -7,6 +7,21 @@
   },
   "host": "localhost:4000",
   "paths": {
+      "/api/products": {
+        "get": {
+          "summary": "Get all products",
+          "description": "User to get all the products list",
+          "security": [{ "JWT": {} }],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized access"
+            }
+          }
+        }
+    },
     "/api/users/signin": {
       "post": {
         "summary": "Login",
