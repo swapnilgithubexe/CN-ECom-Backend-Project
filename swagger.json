@@ -16,16 +16,18 @@
             "in": "body",
             "name": "body",
             "description": "User Creds",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "email": {
                   "type": "string"
                 },
-                "Password": {
+                "password": {
                   "type": "string"
                 }
-              }
+              },
+              "required": ["email", "Password"]
             }
           }
         ],
