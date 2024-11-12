@@ -24,6 +24,11 @@ server.get("/", (req, res) => {
 
 server.use("/api-docs", swagger.serve, swagger.setup(apiDocs))
 
+//For routes which doesn't exist
+server.use((req, res) => {
+  res.status(404).send("API not found!")
+})
+
 server.listen(4000, () => {
   console.log("Server is running on PORT number 4000");
 });
