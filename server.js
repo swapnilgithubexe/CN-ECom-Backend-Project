@@ -17,7 +17,11 @@ import cors from "cors";
 //   next();
 // });
 
-server.use(cors())
+var corOptions = {
+  origin: "*",
+  allowHeaders: "*"
+}
+server.use(cors(corOptions))
 
 server.use(bodyParser.json());
 
