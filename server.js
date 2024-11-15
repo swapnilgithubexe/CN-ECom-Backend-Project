@@ -26,7 +26,7 @@ server.use("/api-docs", swagger.serve, swagger.setup(apiDocs))
 
 //For routes which doesn't exist
 server.use((req, res) => {
-  res.status(404).send("API not found!")
+  res.status(404).send("<h1>API not found!</h1>")
 })
 
 server.listen(4000, () => {
