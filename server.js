@@ -8,6 +8,7 @@ import apiDocs from "./swagger.json" assert {type: 'json'};
 //CORS policy config
 server.use((req, res, next) => {
   res.header("Acess-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "*")
   //return ok for pre flight request
   if (req.method == "OPTIONS") {
     return res.sendStatus(200);
