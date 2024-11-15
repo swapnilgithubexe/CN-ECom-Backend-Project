@@ -9,6 +9,7 @@ import apiDocs from "./swagger.json" assert {type: 'json'};
 server.use((req, res, next) => {
   res.header("Acess-Control-Allow-Origin", "*")
   res.header("Access-Control-Allow-Headers", "*")
+  res.header("Access-Control-Allow-Methods", "*")
   //return ok for pre flight request
   if (req.method == "OPTIONS") {
     return res.sendStatus(200);
