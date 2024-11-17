@@ -5,6 +5,7 @@ import swagger from "swagger-ui-express";
 import apiDocs from "./swagger.json" assert { type: "json" };
 import cors from "cors";
 
+
 //CORS policy config
 // server.use((req, res, next) => {
 //   res.header("Acess-Control-Allow-Origin", "*");
