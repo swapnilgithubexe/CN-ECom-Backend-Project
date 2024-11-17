@@ -26,12 +26,16 @@ server.use(cors(corOptions))
 
 server.use(bodyParser.json());
 
+
+
 //Routes
 import productRouter from "./src/features/product/product.routes.js";
 import userRouter from "./src/features/user/user.routes.js";
 import jwtAuth from "./src/middleware/jwt.middleware.js";
 import cartRouter from "./src/features/cart/cart.routes.js";
+import loggerMiddleware from "./src/middleware/logger.middleware.js";
 
+server.use(loggerMiddleware)
 // Mount productRouter on '/products'
 server.use("/products", jwtAuth, productRouter);
 server.use("/api/users", userRouter);
