@@ -14,8 +14,10 @@ const log = (logData) => {
 
 const loggerMiddleware = async (req, res, next) => {
   //log request body
-  const logData = `${req.url} - ${JSON.stringify(req.body)}`;
-  await log(logData);
+  if (!req.url.includes("signin")) {
+    const logData = `${req.url} - ${JSON.stringify(req.body)}`;
+    await log(logData);
+  }
   next();
 }
 
