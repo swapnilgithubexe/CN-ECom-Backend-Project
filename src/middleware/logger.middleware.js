@@ -15,7 +15,8 @@ const log = (logData) => {
 const loggerMiddleware = async (req, res, next) => {
   //log request body
   const logData = `${req.url} - ${JSON.stringify(req.body)}`;
-  log(logData);
+  await log(logData);
+  next();
 }
 
 export default loggerMiddleware;
