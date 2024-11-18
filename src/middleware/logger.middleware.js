@@ -16,6 +16,7 @@ const fsPromise = fs.promises;
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.json(),
+  defaultMeta: { service: 'request-logging' },
   transports: [new winston.transports.File({ filename: 'logs.txt' })]
 })
 
