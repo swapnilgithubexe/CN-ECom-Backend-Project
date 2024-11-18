@@ -21,23 +21,26 @@ export default class ProductController {
     const userID = req.query.userID;
     const productID = req.query.productID;
     const rating = req.query.rating;
-    const error = ProductModel.rateProduct(userID, productID, rating)
-    if (error) {
+    try {
+      ProductModel.rateProduct(userID, productID, rating)
+    } catch (error) {
       return res.status(400).send(error);
-    } else {
-      return res.status(200).send("Rating has been added");
     }
+
+    return res.status(200).send("Rating has been added");
+
   }
 
   getOneProduct(req, res) {
     const id = req.params.id;
-    const product = ProductModel.getSingleProduct(id);
+    try {
+      ProductModel.getSingleProduct(id);
 
-    if (!product) {
+    } catch (error) {
       return res.status(404).send("Product not found!")
-    } else {
-      return res.status(200).send(product);
     }
+    return res.status(200).send(product);
+
   }
 
   filteredProducts(req, res) {
