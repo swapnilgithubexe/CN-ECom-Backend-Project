@@ -1,0 +1,1 @@
+{"level":"info","message":"/api/cartItems?productID=1&quantity=1 - {}","service":"request-logging"}

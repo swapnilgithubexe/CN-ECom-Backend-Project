@@ -26,7 +26,7 @@ const loggerMiddleware = async (req, res, next) => {
   //log request body
   if (!req.url.includes("signin")) {
     const logData = `${req.url} - ${JSON.stringify(req.body)}`;
-    await log(logData);
+    logger.info(logData);
   }
   next();
 }
