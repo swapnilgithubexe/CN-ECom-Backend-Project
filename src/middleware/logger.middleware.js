@@ -33,3 +33,4 @@ const loggerMiddleware = async (req, res, next) => {
 }
 
 export default loggerMiddleware;
+export { logger };
