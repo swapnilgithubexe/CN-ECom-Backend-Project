@@ -47,6 +47,13 @@ server.get("/", (req, res) => {
 
 server.use("/api-docs", swagger.serve, swagger.setup(apiDocs));
 
+//Error handler middleware
+server.use((err, req, res, next) => {
+  console.log(err);
+  res.status(503).send("Something went wrong, please try agin later.")
+
+})
+
 //For routes which doesn't exist
 server.use((req, res) => {
   res.status(404).send("<h1>API not found!</h1>");
