@@ -56,6 +56,7 @@ server.use((err, req, res, next) => {
     method: req.method,
     body: req.body
   };
+  logger.error(JSON.stringify(errorLog));
   res.status(503).send("Something went wrong, please try again later.")
 
 })
