@@ -33,7 +33,7 @@ import productRouter from "./src/features/product/product.routes.js";
 import userRouter from "./src/features/user/user.routes.js";
 import jwtAuth from "./src/middleware/jwt.middleware.js";
 import cartRouter from "./src/features/cart/cart.routes.js";
-import loggerMiddleware from "./src/middleware/logger.middleware.js";
+import loggerMiddleware, { logger } from "./src/middleware/logger.middleware.js";
 
 server.use(loggerMiddleware)
 // Mount productRouter on '/products'
@@ -49,6 +49,13 @@ server.use("/api-docs", swagger.serve, swagger.setup(apiDocs));
 
 //Error handler middleware
 server.use((err, req, res, next) => {
+  const errorLog = {
+    message: err.message,
+    stack: err.stack,
+    url: req.url,
+    method: req.method,
+    body: req.body
+  };
   res.status(503).send("Something went wrong, please try again later.")
 
 })
