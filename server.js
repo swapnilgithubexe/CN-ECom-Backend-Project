@@ -37,7 +37,7 @@ import loggerMiddleware from "./src/middleware/logger.middleware.js";
 
 server.use(loggerMiddleware)
 // Mount productRouter on '/products'
-server.use("/products", jwtAuth, productRouter);
+server.use("/api/products", jwtAuth, productRouter);
 server.use("/api/users", userRouter);
 server.use("/api/cartItems", jwtAuth, cartRouter);
 
@@ -49,8 +49,7 @@ server.use("/api-docs", swagger.serve, swagger.setup(apiDocs));
 
 //Error handler middleware
 server.use((err, req, res, next) => {
-  console.log(err);
-  res.status(503).send("Something went wrong, please try agin later.")
+  res.status(503).send("Something went wrong, please try again later.")
 
 })
 
