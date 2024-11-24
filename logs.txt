@@ -4,3 +4,4 @@
 {"level":"info","message":"/api/products/rate?productID=1&userID=1&rating=4 - {}","service":"request-logging"}
 {"level":"info","message":"/api/products/rate?productID=100&userID=1&rating=4 - {}","service":"request-logging"}
 {"level":"info","message":"/api/products/rate?productID=1&userID=100&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=1&rating=4 - {}","service":"request-logging"}
