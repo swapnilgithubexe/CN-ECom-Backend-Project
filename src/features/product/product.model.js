@@ -1,6 +1,5 @@
 import { ApplicationError } from "../../error/applicationError.js";
 import UserModel from "../user/user.model.js";
-import fs from "fs"
 
 export default class ProductModel {
   constructor(id, name, desc, price, imageUrl, category, sizes) {
@@ -53,7 +52,7 @@ export default class ProductModel {
     }
     else {
       //check if the rating is given by same user.
-      const existingRatingIndex = product.ratings.findIndex(r => r.userID = userID);
+      const existingRatingIndex = product.ratings.findIndex(r => r.userI = userID);
       if (existingRatingIndex >= 0) {
         product.ratings[existingRatingIndex] = { userID: userID, rating: rating, }
       } else {
