@@ -34,6 +34,7 @@ import userRouter from "./src/features/user/user.routes.js";
 import jwtAuth from "./src/middleware/jwt.middleware.js";
 import cartRouter from "./src/features/cart/cart.routes.js";
 import loggerMiddleware, { logger } from "./src/middleware/logger.middleware.js";
+import { ApplicationError } from "./src/error/applicationError.js";
 
 server.use(loggerMiddleware)
 // Mount productRouter on '/products'
@@ -57,7 +58,13 @@ server.use((err, req, res, next) => {
     body: req.body
   };
   logger.error(JSON.stringify(errorLog));
-  res.status(503).send("Something went wrong, please try again later.")
+
+  if (err instanceof ApplicationError) {
+    res.status(err.code).send(err.message);
+  }
+
+  //server error
+  res.status(500).send("Something went wrong, please try again later.")
 
 })
 
