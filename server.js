@@ -35,6 +35,7 @@ import jwtAuth from "./src/middleware/jwt.middleware.js";
 import cartRouter from "./src/features/cart/cart.routes.js";
 import loggerMiddleware, { logger } from "./src/middleware/logger.middleware.js";
 import { ApplicationError } from "./src/error/applicationError.js";
+import mongodbconnection from "./src/config/mongodb.js";
 
 server.use(loggerMiddleware)
 // Mount productRouter on '/products'
@@ -75,4 +76,5 @@ server.use((req, res) => {
 
 server.listen(4000, () => {
   console.log("Server is running on PORT number 4000");
+  mongodbconnection();
 });
