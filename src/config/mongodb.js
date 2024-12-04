@@ -2,8 +2,11 @@ import { MongoClient } from "mongodb";
 
 const url = "mongodb://localhost:27017/CN_EcomDB"
 
-const mongodbconnection = () => {
-  MongoClient.connect(url).then(client => {
+let client;
+
+export const mongodbconnection = () => {
+  MongoClient.connect(url).then((clientInstance) => {
+    client = clientInstance
     console.log("Database Connected");
 
   }).catch(err => {
@@ -12,5 +15,8 @@ const mongodbconnection = () => {
   })
 }
 
-export default mongodbconnection;
+export const getDB = () => {
+  return client.db();
+}
+
 

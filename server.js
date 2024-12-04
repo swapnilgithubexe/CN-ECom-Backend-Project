@@ -35,7 +35,7 @@ import jwtAuth from "./src/middleware/jwt.middleware.js";
 import cartRouter from "./src/features/cart/cart.routes.js";
 import loggerMiddleware, { logger } from "./src/middleware/logger.middleware.js";
 import { ApplicationError } from "./src/error/applicationError.js";
-import mongodbconnection from "./src/config/mongodb.js";
+import { mongodbconnection } from "./src/config/mongodb.js";
 
 server.use(loggerMiddleware)
 // Mount productRouter on '/products'
