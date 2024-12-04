@@ -1,0 +1,2 @@
+{"level":"info","message":"/api/users/signup - {\"email\":\"swapnildutta2002@gmail.com\",\"password\":\"password1\",\"name\":\"Swapnil\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signup - {\"email\":\"swapnildutta2002@gmail.com\",\"password\":\"password1\",\"name\":\"Swapnil\",\"type\":\"seller\"}","service":"request-logging"}

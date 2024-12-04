@@ -7,7 +7,7 @@ export default class UserModel {
     this.email = email,
       this.password = password;
     this.type = type;
-    this.id = id;
+    this._id = id;
   }
 
   static async SignUp(name, email, password, type) {
