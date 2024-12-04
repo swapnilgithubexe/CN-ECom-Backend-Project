@@ -24,10 +24,11 @@ export default class UserModel {
       //Insert the document
       await collection.insertOne(newUser);
 
+      return newUser;
+
     } catch (error) {
       throw new ApplicationError("Something went wrong", 500);
     }
-    return newUser;
   }
 
   static SignIn(email, password) {
