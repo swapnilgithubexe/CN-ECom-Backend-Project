@@ -1,3 +1,4 @@
+import { getDB } from "../../config/mongodb.js";
 import { ApplicationError } from "../../error/applicationError.js";
 
 class UserRepository {
@@ -14,7 +15,7 @@ class UserRepository {
 
       return newUser;
     } catch (error) {
-      throw new ApplicationError("Something went wrong", 500);
+      throw new ApplicationError("Something went wrong with the database.", 500);
     }
   }
 }
