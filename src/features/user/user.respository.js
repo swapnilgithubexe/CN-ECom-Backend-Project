@@ -1,3 +1,5 @@
+import { ApplicationError } from "../../error/applicationError.js";
+
 class UserRepository {
   async SignUp(newUser) {
     try {
