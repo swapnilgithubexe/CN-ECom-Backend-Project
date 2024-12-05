@@ -18,6 +18,24 @@ class UserRepository {
       throw new ApplicationError("Something went wrong with the database.", 500);
     }
   }
+
+
+  //signIn
+  async SignIn(email, password) {
+    try {
+      //Get the database
+      const db = getDB();
+
+      //get collections
+      const collection = db.collection("users");
+
+      //Insert the document
+      return await collection.findOne({ email, password });
+
+    } catch (error) {
+      throw new ApplicationError("Something went wrong with the database.", 500);
+    }
+  }
 }
 
 export default UserRepository;

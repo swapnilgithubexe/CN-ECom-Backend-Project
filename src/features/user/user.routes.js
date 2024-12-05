@@ -4,7 +4,9 @@ import UserController from "./user.controller.js";
 const router = express.Router();
 const userController = new UserController();
 
-router.post("/signin", userController.signIn);
+router.post("/signin", (req, res) => {
+  userController.signIn(req, res)
+});
 router.post("/signup", (req, res) => {
   userController.signUp(req, res)
 });

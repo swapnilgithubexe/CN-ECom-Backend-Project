@@ -4,3 +4,4 @@
 {"level":"info","message":"/api/users/signup - {\"email\":\"seller2@gmail.com\",\"password\":\"password\",\"name\":\"test2\",\"type\":\"seller\"}","service":"request-logging"}
 {"level":"info","message":"/api/users/signup - {\"email\":\"seller2@gmail.com\",\"password\":\"password\",\"name\":\"test2\",\"type\":\"seller\"}","service":"request-logging"}
 {"level":"info","message":"/api/users/signup - {\"email\":\"seller2@gmail.com\",\"password\":\"password\",\"name\":\"test2\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signup - {\"email\":\"seller2@gmail.com\",\"password\":\"password\",\"name\":\"test2\",\"type\":\"seller\"}","service":"request-logging"}
