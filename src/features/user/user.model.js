@@ -10,26 +10,6 @@ export default class UserModel {
     this._id = id;
   }
 
-  static async SignUp(name, email, password, type) {
-    try {
-
-      //Get the database
-      const db = getDB();
-
-      //get collections
-      const collection = db.collection("users");
-
-      const newUser = new UserModel(name, email, password, type)
-
-      //Insert the document
-      await collection.insertOne(newUser);
-
-      return newUser;
-
-    } catch (error) {
-      throw new ApplicationError("Something went wrong", 500);
-    }
-  }
 
   static SignIn(email, password) {
     const user = users.find((u) => u.email == email && u.password == password)
