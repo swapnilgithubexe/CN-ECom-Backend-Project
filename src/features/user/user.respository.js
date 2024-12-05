@@ -1,5 +1,5 @@
 class UserRepository {
-  static async SignUp(newUser) {
+  async SignUp(newUser) {
     try {
       //Get the database
       const db = getDB();
