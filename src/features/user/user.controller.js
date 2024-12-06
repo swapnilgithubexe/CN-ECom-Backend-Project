@@ -17,7 +17,14 @@ export default class UserController {
       const user = new UserModel(name, email, hashedPassword, type)
 
       await this.userRepository.SignUp(user);
-      res.status(201).json({ message: "User created successfully" });
+      res.status(201).json({
+        message: "User created successfully",
+        userDetails: {
+          name: user.name,
+          email: user.email,
+          id: user._id
+        }
+      });
     } catch (error) {
       throw new ApplicationError("Something went wrong", 500);
     }
@@ -25,14 +32,27 @@ export default class UserController {
 
   async signIn(req, res) {
     try {
-      const result = await this.userRepository.SignIn(req.body.email, req.body.password);
-      if (!result) {
-        return res.status(400).json({ message: "Invalid Credentials/User not found!" })
+
+      const user = await this.userRepository.findByEmail(req.body.email);
+      if (!user) {
+        return res.status(400).json({ message: "Invalid Credentials/ User not found!" });
+      } else {
+        //compare password w hashed pass
+        const result = await bcrypt.compare(req.body.password, user.password);
+        if (result) {
+          const token = jwt.sign({ userId: result.id, email: result.email }, "TELLMEDOYOUBLEED?", { expiresIn: "1h" })
+          return res.status(200).json({
+            message: "SignIn successfull",
+            token: token
+          });
+
+        }
+        else {
+          return res.status(400).json({ message: "Invalid Credentials/User not found!" });
+        }
+
       }
-      else {
-        const token = jwt.sign({ userId: result.id, email: result.email }, "TELLMEDOYOUBLEED?", { expiresIn: "1h" })
-        return res.status(200).send(token)
-      }
+
     } catch (error) {
       console.log(error);
       return res.status(400).send("Something went wrong")
