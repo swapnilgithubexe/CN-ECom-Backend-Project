@@ -27,7 +27,7 @@ export default class UserController {
     try {
       const result = await this.userRepository.SignIn(req.body.email, req.body.password);
       if (!result) {
-        return res.status(400).send("Invalid Credentials/User not found!")
+        return res.status(400).json({ message: "Invalid Credentials/User not found!" })
       }
       else {
         const token = jwt.sign({ userId: result.id, email: result.email }, "TELLMEDOYOUBLEED?", { expiresIn: "1h" })
