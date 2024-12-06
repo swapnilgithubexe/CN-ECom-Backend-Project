@@ -2,6 +2,7 @@ import { ApplicationError } from "../../error/applicationError.js";
 import UserModel from "./user.model.js";
 import jwt from "jsonwebtoken";
 import UserRepository from "./user.respository.js";
+import bcrypt from "bcrypt";
 
 export default class UserController {
   constructor() {
@@ -10,10 +11,13 @@ export default class UserController {
   async signUp(req, res) {
     try {
       const { name, email, password, type } = req.body;
-      const user = new UserModel(name, email, password, type)
+
+      //hashing password
+      const hashedPassword = await bcrypt.hash(password, 11)
+      const user = new UserModel(name, email, hashedPassword, type)
 
       await this.userRepository.SignUp(user);
-      res.status(201).send(user);
+      res.status(201).json({ message: "User created successfully" });
     } catch (error) {
       throw new ApplicationError("Something went wrong", 500);
     }
