@@ -43,7 +43,7 @@ export default class UserController {
         if (result) {
           const token = jwt.sign(
             { userId: result.id, email: result.email },
-            "TELLMEDOYOUBLEED?",
+            process.env.JWT_SECRET,
             { expiresIn: "1h" }
           );
           return res.status(200).json({
