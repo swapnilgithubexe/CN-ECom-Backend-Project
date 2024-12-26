@@ -1,11 +1,11 @@
 import { MongoClient } from "mongodb";
 
-const url = ""
+
 
 let client;
 
 export const mongodbconnection = () => {
-  MongoClient.connect(url).then((clientInstance) => {
+  MongoClient.connect(process.env.DB_URL).then((clientInstance) => {
     client = clientInstance
     console.log("Database Connected");
 
