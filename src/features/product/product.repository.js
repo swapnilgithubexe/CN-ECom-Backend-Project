@@ -1,4 +1,5 @@
 import { getDB } from "../../config/mongodb.js";
+import { ApplicationError } from "../../error/applicationError.js";
 
 class ProductRepository {
   async add(newProduct) {
@@ -9,7 +10,7 @@ class ProductRepository {
 
       return await collection.insertOne({ newProduct });
     } catch (error) {
-
+      throw new ApplicationError("Something is wrong with the database", 500);
     }
   }
 
