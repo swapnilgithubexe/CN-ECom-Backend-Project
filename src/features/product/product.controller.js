@@ -17,11 +17,10 @@ export default class ProductController {
 
   async addProduct(req, res) {
     const { name, price, sizes } = req.body;
-    const newProduct = new ProductModel(name, parseFloat(price),
-      sizes.split(","),
-      req.file.filename,);
-    const newRecord = this.productRepository.add(newProduct);
-    res.status(201).send("New Product Added!")
+    const newProduct = new ProductModel(name, null, parseFloat(price),
+      req.file.filename, null, sizes.split(","));
+    const newRecord = await this.productRepository.add(newProduct);
+    res.status(201).send(newRecord);
   }
 
   rateProduct(req, res) {
@@ -38,10 +37,12 @@ export default class ProductController {
 
   }
 
-  getOneProduct(req, res) {
+  async getOneProduct(req, res) {
     try {
       const id = req.params.id;
       const product = this.productRepository.get(id);
+      console.log(product);
+
       if (!product) {
         return res.status(404).send("Product not found!");
       } else {
