@@ -20,7 +20,7 @@ export default class ProductController {
     const newProduct = new ProductModel(name, parseFloat(price),
       sizes.split(","),
       req.file.filename,);
-    const newRecord = ProductModel.addNewProduct(newProduct);
+    const newRecord = this.productRepository.add(newProduct);
     res.status(201).send("New Product Added!")
   }
 
