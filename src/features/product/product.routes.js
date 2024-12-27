@@ -14,8 +14,12 @@ router.post("/", uploadFile.single("imageUrl"), (req, res) => {
 
 router.get("/filter", productController.filteredProducts.bind(productController)); // '/products/filter'
 
-router.get("/:id", productController.getOneProduct); // '/products/:id'
+router.get("/:id", (req, res) => {
+  productController.getOneProduct(req, res)
+}); // '/products/:id'
 
-router.post("/rate", productController.rateProduct)
+router.post("/rate", (req, res) => {
+  productController.rateProduct(req, res)
+})
 
 export default router;

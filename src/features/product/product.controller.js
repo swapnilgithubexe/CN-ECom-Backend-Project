@@ -1,3 +1,4 @@
+import { ApplicationError } from "../../error/applicationError.js";
 import ProductModel from "./product.model.js";
 import ProductRepository from "./product.repository.js";
 
@@ -5,9 +6,13 @@ export default class ProductController {
   constructor() {
     this.productRepository = new ProductRepository()
   }
-  getAllProducts(req, res) {
-    const products = ProductModel.GetAll();
-    res.status(200).send(products);
+  async getAllProducts(req, res) {
+    try {
+      const products = this.productRepository.GetAll();
+      res.status(200).send(products);
+    } catch (error) {
+      throw new ApplicationError("Something is wrong with the database", 500);
+    }
   }
 
   async addProduct(req, res) {
@@ -34,15 +39,17 @@ export default class ProductController {
   }
 
   getOneProduct(req, res) {
-    const id = req.params.id;
     try {
-      ProductModel.getSingleProduct(id);
-
+      const id = req.params.id;
+      const product = this.productRepository.get(id);
+      if (!product) {
+        return res.status(404).send("Product not found!");
+      } else {
+        return res.status(200).send(product);
+      }
     } catch (error) {
       return res.status(404).send("Product not found!")
     }
-    return res.status(200).send(product);
-
   }
 
   filteredProducts(req, res) {
