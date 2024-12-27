@@ -30,3 +30,4 @@
 {"level":"info","message":"/api/products/676ed2ac185d8a660fc3f61e - {}","service":"request-logging"}
 {"level":"info","message":"/api/products/676ed2ac185d8a660fc3f61e - {}","service":"request-logging"}
 {"level":"info","message":"/api/products/676ed2ac185d8a660fc3f61e - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/676ed2ac185d8a660fc3f61e - {}","service":"request-logging"}
