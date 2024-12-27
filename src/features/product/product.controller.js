@@ -1,18 +1,20 @@
 import ProductModel from "./product.model.js";
+import ProductRepository from "./product.repository.js";
 
 export default class ProductController {
+  constructor() {
+    this.productRepository = new ProductRepository()
+  }
   getAllProducts(req, res) {
     const products = ProductModel.GetAll();
     res.status(200).send(products);
   }
 
-  addProduct(req, res) {
+  async addProduct(req, res) {
     const { name, price, sizes } = req.body;
-    const newProduct = {
-      name, price: parseFloat(price),
-      sizes: sizes.split(","),
-      imageUrl: req.file.filename,
-    };
+    const newProduct = new ProductModel(name, parseFloat(price),
+      sizes.split(","),
+      req.file.filename,);
     const newRecord = ProductModel.addNewProduct(newProduct);
     res.status(201).send("New Product Added!")
   }
