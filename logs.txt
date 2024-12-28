@@ -31,3 +31,10 @@
 {"level":"info","message":"/api/products/676ed2ac185d8a660fc3f61e - {}","service":"request-logging"}
 {"level":"info","message":"/api/products/676ed2ac185d8a660fc3f61e - {}","service":"request-logging"}
 {"level":"info","message":"/api/products/676ed2ac185d8a660fc3f61e - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/676ed2ac185d8a660fc3f61e - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/676ed2ac185d8a660fc3f61e - {}","service":"request-logging"}
+{"level":"info","message":"/api/products - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/676ff183c9214f27e364a41e - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/676ff183c9214f27e364a41e - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/676ff183c9214f27e364a41e - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/676ff183c9214f27e364a41e - {}","service":"request-logging"}

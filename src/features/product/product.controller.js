@@ -40,8 +40,7 @@ export default class ProductController {
   async getOneProduct(req, res) {
     try {
       const id = req.params.id;
-      const product = this.productRepository.get(id);
-      console.log(product);
+      const product = await this.productRepository.get(id);
 
       if (!product) {
         return res.status(404).send("Product not found!");
