@@ -43,4 +43,26 @@ export default class ProductRepository {
       throw new ApplicationError("Something is wrong with the database", 500);
     }
   }
+
+  async filter(minPrice, maxPrice, category) {
+    try {
+      const db = getDB();
+      const collection = db.collection(this.collection);
+
+      let filterExpression = {};
+
+      if (minPrice) {
+        filterExpression.price = { $gte: parseFloat(minPrice) }
+      }
+      if (maxPrice) {
+        filterExpression.price = { $lte: parseFloat(maxPrice) }
+      }
+      if (category) {
+        filterExpression.category = category;
+      }
+    } catch (error) {
+
+    }
+
+  }
 }
