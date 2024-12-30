@@ -75,7 +75,7 @@ export default class ProductRepository {
       const collection = db.collection(this.collection);
 
       await collection.updateOne({ _id: new ObjectId(productID) }, {
-        $push: { ratings: { userID, rating } }
+        $push: { ratings: { userID: new ObjectId(userID), rating } }
       });
     } catch (error) {
       console.error(error.message);
