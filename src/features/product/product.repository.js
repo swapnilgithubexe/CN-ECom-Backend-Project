@@ -63,8 +63,23 @@ export default class ProductRepository {
 
       return collection.find(filterExpression).toArray();
     } catch (error) {
-      return res.status(404).send("Something went wrong!")
+      console.error(error.message);
+      throw new ApplicationError("Something is wrong with the database", 500);
     }
 
+  }
+
+  async rate(userID, productID, rating) {
+    try {
+      const db = getDB();
+      const collection = db.collection(this.collection);
+
+      await collection.updateOne({ _id: new ObjectId(productID) }, {
+        $push: { ratings: { userID, rating } }
+      });
+    } catch (error) {
+      console.error(error.message);
+      throw new ApplicationError("Something is wrong with the database", 500);
+    }
   }
 }

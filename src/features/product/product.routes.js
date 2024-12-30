@@ -20,8 +20,8 @@ router.get("/:id", (req, res) => {
   productController.getOneProduct(req, res)
 }); // '/products/:id'
 
-router.post("/rate", (req, res) => {
-  productController.rateProduct(req, res)
+router.post("/rate", (req, res, next) => {
+  productController.rateProduct(req, res, next)
 })
 
 export default router;

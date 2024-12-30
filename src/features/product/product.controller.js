@@ -23,17 +23,21 @@ export default class ProductController {
     res.status(201).send(newRecord);
   }
 
-  rateProduct(req, res) {
-    const userID = req.query.userID;
-    const productID = req.query.productID;
-    const rating = req.query.rating;
+  async rateProduct(req, res, next) {
     try {
-      ProductModel.rateProduct(userID, productID, rating)
-    } catch (error) {
-      return res.status(400).send(error.message);
-    }
+      const userID = req.userID;
+      const productID = req.query.productID;
+      const rating = req.query.rating;
 
-    return res.status(200).send("Rating has been added");
+      this.productRepository.rate(userID, productID, rating);
+
+      return res.status(200).send("Rating has been added");
+    } catch (error) {
+      console.error(error.message);
+      next(error)
+      throw new ApplicationError("Something is wrong with the database", 500);
+
+    }
 
   }
 

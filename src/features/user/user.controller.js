@@ -49,7 +49,7 @@ export default class UserController {
 
       if (isPasswordValid) {
         const token = jwt.sign(
-          { userId: user.id, email: user.email },
+          { userId: user._id, email: user.email },
           process.env.JWT_SECRET,
           { expiresIn: "1h" }
         );
