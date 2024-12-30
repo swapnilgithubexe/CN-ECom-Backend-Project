@@ -12,7 +12,9 @@ router.post("/", uploadFile.single("imageUrl"), (req, res) => {
   productController.addProduct(req, res);
 }); // '/products'
 
-router.get("/filter", productController.filteredProducts.bind(productController)); // '/products/filter'
+router.get("/filter", (req, res) => {
+  productController.filteredProducts(req, res)
+}); // '/products/filter'
 
 router.get("/:id", (req, res) => {
   productController.getOneProduct(req, res)

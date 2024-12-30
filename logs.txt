@@ -38,3 +38,5 @@
 {"level":"info","message":"/api/products/676ff183c9214f27e364a41e - {}","service":"request-logging"}
 {"level":"info","message":"/api/products/676ff183c9214f27e364a41e - {}","service":"request-logging"}
 {"level":"info","message":"/api/products/676ff183c9214f27e364a41e - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/filter?minPrice=2000 - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/filter?minPrice=2000 - {}","service":"request-logging"}

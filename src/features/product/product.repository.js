@@ -60,8 +60,10 @@ export default class ProductRepository {
       if (category) {
         filterExpression.category = category;
       }
-    } catch (error) {
 
+      return collection.find(filterExpression).toArray();
+    } catch (error) {
+      return res.status(404).send("Something went wrong!")
     }
 
   }
