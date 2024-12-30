@@ -52,13 +52,13 @@ export default class ProductController {
     }
   }
 
-  filteredProducts(req, res) {
+  async filteredProducts(req, res) {
 
     const minPrice = Number(req.query.minPrice);
     const maxPrice = Number(req.query.maxPrice);
     const category = req.query.category;
 
-    const result = ProductModel.filter(minPrice, maxPrice, category);
+    const result = this.productRepository.filter(minPrice, maxPrice, category);
 
     res.status(200).send(result);
   }
