@@ -48,19 +48,22 @@ export default class ProductController {
         return res.status(200).send(product);
       }
     } catch (error) {
-      return res.status(404).send("Product not found!")
+      return res.status(404).send("Something went wrong!")
     }
   }
 
   async filteredProducts(req, res) {
+    try {
+      const minPrice = Number(req.query.minPrice);
+      const maxPrice = Number(req.query.maxPrice);
+      const category = req.query.category;
 
-    const minPrice = Number(req.query.minPrice);
-    const maxPrice = Number(req.query.maxPrice);
-    const category = req.query.category;
+      const result = await this.productRepository.filter(minPrice, maxPrice, category);
 
-    const result = this.productRepository.filter(minPrice, maxPrice, category);
-
-    res.status(200).send(result);
+      res.status(200).send(result);
+    } catch (error) {
+      return res.status(404).send("Something went wrong!")
+    }
   }
 
 }
