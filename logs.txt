@@ -87,3 +87,16 @@
 {"level":"info","message":"/api/products/rate?productID=67730328e8878f9613c72feb&rating=5 - {}","service":"request-logging"}
 {"level":"info","message":"/api/products - {}","service":"request-logging"}
 {"level":"info","message":"/api/products/rate?productID=677307ab49b90c491bb65d61&rating=5 - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":4.1}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":4.1}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":4.1}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":4.5}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":2.7}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":2.8}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":2.8}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":5}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":4}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":4}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":4.2}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":2.5}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":2.8}","service":"request-logging"}
