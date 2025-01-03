@@ -1,21 +1,35 @@
+import { ObjectId } from "mongodb";
 import CartItemModel from "./cart.model.js";
+import cartRepository from "./cart.repository.js";
 
 export class CartItemsController {
-  add(req, res) {
-    const { productID, quantity } = req.query;
-    //took userID from token for security reasons(attackers can't hinder the token which is generated)
-    const userID = req.userID;
 
-    CartItemModel.add(productID, userID, quantity)
+  constructor() {
+    this.cartRepository = new cartRepository()
+  }
+  async add(req, res) {
+    try {
+      const { productID, quantity } = req.body;
+      //took userID from token for security reasons(attackers can't hinder the token which is generated)
+      const userID = req.userID;
 
-    res.status(201).send("Cart is updated!")
+      await this.cartRepository.add(productID, userID, quantity);
+
+      res.status(201).send("Cart is updated!")
+    } catch (error) {
+      res.status(400).send(error.message)
+    }
   }
 
-  get(req, res) {
-    const userID = req.userID;
-    const items = CartItemModel.get(userID);
+  async get(req, res) {
+    try {
+      const userID = req.userID;
+      const items = await this.cartRepository.get(userID);
 
-    return res.status(200).send(items);
+      return res.status(200).send(items);
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
   }
 
   delete(req, res) {

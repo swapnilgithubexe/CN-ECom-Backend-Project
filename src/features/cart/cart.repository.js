@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { getDB } from "../../config/mongodb.js";
 
 export default class cartRepository {
@@ -10,7 +11,22 @@ export default class cartRepository {
       const db = getDB();
       const collection = db.collection(this.collection);
 
-      await collection.insertOne({ productID, userID, quantity })
+      await collection.insertOne({ productID: new ObjectId(productID), userID: new ObjectId(userID), quantity })
+    } catch (error) {
+      console.error(error.message);
+      throw new ApplicationError("Something is wrong with the database", 500);
+    }
+  }
+
+  async get(userID) {
+    try {
+      const db = getDB();
+      const collection = db.collection(this.collection);
+
+      const cartItems = await collection.find({ userID: new ObjectId(userID) }).toArray();
+
+      return cartItems;
+
     } catch (error) {
       console.error(error.message);
       throw new ApplicationError("Something is wrong with the database", 500);

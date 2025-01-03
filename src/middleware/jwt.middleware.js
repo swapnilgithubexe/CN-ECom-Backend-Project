@@ -13,7 +13,6 @@ const jwtAuth = (req, res, next) => {
   try {
     const payload = jwt.verify(token, "TELLMEDOYOUBLEED?");
     req.userID = payload.userId;
-    console.log(payload.userId);
 
 
   } catch (error) {
