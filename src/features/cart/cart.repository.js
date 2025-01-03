@@ -33,12 +33,12 @@ export default class cartRepository {
     }
   }
 
-  async delete(cartItemID) {
+  async delete(cartItemID, userID) {
     try {
       const db = getDB();
       const collection = db.collection(this.collection);
 
-      await collection.deleteOne({ _id: new ObjectId(cartItemID) });
+      await collection.deleteOne({ _id: new ObjectId(cartItemID), userID: new ObjectId(userID) });
       return "Item has been deleted successfully!"
     } catch (error) {
       console.error(error.message);

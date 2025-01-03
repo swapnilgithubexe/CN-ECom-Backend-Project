@@ -128,3 +128,6 @@
 {"level":"info","message":"/api/cartItems/6778415dda308f7fbfaebb41 - {}","service":"request-logging"}
 {"level":"info","message":"/api/cartItems - {\"productID\":\"677307ab49b90c491bb65d61\",\"quantity\":5}","service":"request-logging"}
 {"level":"info","message":"/api/cartItems/67784ef9e2cdc60a37d74737 - {}","service":"request-logging"}
+{"level":"info","message":"/api/cartItems - {}","service":"request-logging"}
+{"level":"info","message":"/api/cartItems - {\"productID\":\"677307ab49b90c491bb65d61\",\"quantity\":5}","service":"request-logging"}
+{"level":"info","message":"/api/cartItems/67784f251227dbff4e973393 - {}","service":"request-logging"}
