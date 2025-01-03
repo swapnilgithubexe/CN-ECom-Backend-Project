@@ -103,3 +103,4 @@
 {"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":2.8}","service":"request-logging"}
 {"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":2.1}","service":"request-logging"}
 {"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":2.1}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":2.7}","service":"request-logging"}
