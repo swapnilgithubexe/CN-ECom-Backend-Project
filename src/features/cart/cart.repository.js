@@ -32,4 +32,17 @@ export default class cartRepository {
       throw new ApplicationError("Something is wrong with the database", 500);
     }
   }
+
+  async delete(cartItemID) {
+    try {
+      const db = getDB();
+      const collection = db.collection(this.collection);
+
+      await collection.deleteOne({ _id: new ObjectId(cartItemID) });
+      return "Item has been deleted successfully!"
+    } catch (error) {
+      console.error(error.message);
+      throw new ApplicationError("Something is wrong with the database", 500);
+    }
+  }
 }
