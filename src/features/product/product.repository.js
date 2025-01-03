@@ -106,7 +106,7 @@ export default class ProductRepository {
 
       const productObjectId = new ObjectId(productID);
       const userObjectId = new ObjectId(userID);
-
+      //Below are atomic operations i.e both will either execute side by side or.
       //1.Upadte the existing rating
       await collection.updateOne({
         _id: productObjectId
