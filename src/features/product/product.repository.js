@@ -127,4 +127,23 @@ export default class ProductRepository {
     }
   }
 
+  async averageProductPricePerCategory() {
+    try {
+      const db = getDB()
+      return await db.collection(this.collection).aggregate([
+        //stage1 
+        {
+          $group: {
+            _id: "$category",
+            averagePrice: {
+              $avg: "$price"
+            }
+          }
+        }
+      ]).toArray();
+    } catch (error) {
+
+    }
+  }
+
 }
