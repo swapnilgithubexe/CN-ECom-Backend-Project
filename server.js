@@ -37,12 +37,14 @@ import cartRouter from "./src/features/cart/cart.routes.js";
 import loggerMiddleware, { logger } from "./src/middleware/logger.middleware.js";
 import { ApplicationError } from "./src/error/applicationError.js";
 import { mongodbconnection } from "./src/config/mongodb.js";
+import orderRouter from "./src/features/order/order.routes.js";
 
 server.use(loggerMiddleware)
 // Mount productRouter on '/products'
 server.use("/api/products", jwtAuth, productRouter);
 server.use("/api/users", userRouter);
 server.use("/api/cartItems", jwtAuth, cartRouter);
+server.use("/api/orders", jwtAuth, orderRouter);
 
 server.get("/", (req, res) => {
   res.send("Welcome Guys!");
