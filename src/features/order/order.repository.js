@@ -7,14 +7,16 @@ export default class OrderRepository {
   };
 
   async placeOrder(userId) {
+    await this.getTotalAmount(userId);
+    console.log(userId);
 
   }
 
   async getTotalAmount(userId) {
     const db = getDB();
-    await db.collection("cartItems").aggregate([
+    const items = await db.collection("cartItems").aggregate([
       {
-        $match: { userId: new ObjectId(userId) }
+        $match: { userID: new ObjectId(userId) }
       },
       {
         $lookup: {
@@ -28,12 +30,14 @@ export default class OrderRepository {
         $unwind: "$productInfo"
       },
       {
-        $addField: {
+        $addFields: {
           "totalAmount": {
             $multiply: ["$productInfo.price", "$quantity"]
           }
         }
       }
-    ])
+    ]).toArray();
+    console.log(items);
+
   }
 }
