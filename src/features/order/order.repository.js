@@ -8,7 +8,6 @@ export default class OrderRepository {
 
   async placeOrder(userId) {
     await this.getTotalAmount(userId);
-    console.log(userId);
 
   }
 
@@ -37,7 +36,10 @@ export default class OrderRepository {
         }
       }
     ]).toArray();
-    console.log(items);
+    const itemsTotal = items.reduce((acc, item) => {
+      return acc + item.totalAmount
+    }, 0);
+
 
   }
 }
