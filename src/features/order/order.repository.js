@@ -1,5 +1,8 @@
 import { ObjectId } from "mongodb";
 import { getDB } from "../../config/mongodb.js";
+import OrderModel from "./order.model.js";
+import { ApplicationError } from "../../error/applicationError.js";
+
 
 export default class OrderRepository {
   constructor() {
@@ -7,39 +10,68 @@ export default class OrderRepository {
   };
 
   async placeOrder(userId) {
-    await this.getTotalAmount(userId);
+    try {
+      // console.log("API hit");
+      // console.log(userId);
 
+      const db = getDB();
+      const items = await this.getTotalAmount(userId);
+      // console.log(items);
+      const itemsTotal = items.reduce((acc, item) => {
+        return acc + item.totalAmount
+      }, 0);
+      // console.log(itemsTotal);
+      const newOrder = new OrderModel(new ObjectId(userId), itemsTotal, new Date())
+      db.collection(this.collection).insertOne(newOrder);
+
+      for (let item of items) {
+        await db.collection("products").updateOne(
+          { _id: item.productID },
+          { $inc: { stock: -item.quantity } }
+        );
+
+      }
+      await db.collection("cartItems").deleteMany({
+        userID: new ObjectId(userId)
+      });
+      return;
+    } catch (error) {
+      throw new ApplicationError("Something went Wrong with the database", 500)
+    }
   }
 
   async getTotalAmount(userId) {
-    const db = getDB();
-    const items = await db.collection("cartItems").aggregate([
-      {
-        $match: { userID: new ObjectId(userId) }
-      },
-      {
-        $lookup: {
-          from: "products",
-          localField: "productID",
-          foreignField: "_id",
-          as: "productInfo"
-        }
-      },
-      {
-        $unwind: "$productInfo"
-      },
-      {
-        $addFields: {
-          "totalAmount": {
-            $multiply: ["$productInfo.price", "$quantity"]
+    try {
+      const db = getDB();
+      const items = await db.collection("cartItems").aggregate([
+        {
+          $match: { userID: new ObjectId(userId) }
+        },
+        {
+          $lookup: {
+            from: "products",
+            localField: "productID",
+            foreignField: "_id",
+            as: "productInfo"
+          }
+        },
+        {
+          $unwind: "$productInfo"
+        },
+        {
+          $addFields: {
+            "totalAmount": {
+              $multiply: ["$productInfo.price", "$quantity"]
+            }
           }
         }
-      }
-    ]).toArray();
-    const itemsTotal = items.reduce((acc, item) => {
-      return acc + item.totalAmount
-    }, 0);
+      ]).toArray();
 
+      return items;
 
+    }
+    catch (error) {
+      throw new ApplicationError("Something went Wrong with the database", 500)
+    }
   }
 }
