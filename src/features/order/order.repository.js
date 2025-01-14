@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { getDB } from "../../config/mongodb.js";
+import { getClient, getDB } from "../../config/mongodb.js";
 import OrderModel from "./order.model.js";
 import { ApplicationError } from "../../error/applicationError.js";
 
@@ -11,9 +11,7 @@ export default class OrderRepository {
 
   async placeOrder(userId) {
     try {
-      // console.log("API hit");
-      // console.log(userId);
-
+      const client = getClient();
       const db = getDB();
       const items = await this.getTotalAmount(userId);
       // console.log(items);
