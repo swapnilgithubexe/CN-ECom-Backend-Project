@@ -42,7 +42,7 @@ export default class OrderRepository {
     }
   }
 
-  async getTotalAmount(userId) {
+  async getTotalAmount(userId, session) {
     try {
       const db = getDB();
       const items = await db.collection("cartItems").aggregate([

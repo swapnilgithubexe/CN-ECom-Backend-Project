@@ -33,19 +33,13 @@ export default class UserController {
   async signIn(req, res) {
     try {
       const user = await this.userRepository.findByEmail(req.body.email);
-      console.log("User from DB:", user);
 
       if (!user) {
         return res.status(400).json({ message: "Invalid Credentials/ User not found!" });
       }
 
-      console.log("Plain-Text Password:", req.body.password);
-      console.log("Hashed Password from DB:", user.password);
-
       // Compare password with hashed password
       const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
-      console.log("Password Comparison Result:", isPasswordValid);
-
 
       if (isPasswordValid) {
         const token = jwt.sign(
