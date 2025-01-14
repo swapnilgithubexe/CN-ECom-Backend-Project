@@ -12,26 +12,30 @@ export default class OrderRepository {
   async placeOrder(userId) {
     try {
       const client = getClient();
+      const session = client.startSession();
+
+      session.startTransaction();
+
       const db = getDB();
-      const items = await this.getTotalAmount(userId);
+      const items = await this.getTotalAmount(userId, session);
       // console.log(items);
       const itemsTotal = items.reduce((acc, item) => {
         return acc + item.totalAmount
       }, 0);
       // console.log(itemsTotal);
       const newOrder = new OrderModel(new ObjectId(userId), itemsTotal, new Date())
-      db.collection(this.collection).insertOne(newOrder);
+      db.collection(this.collection).insertOne(newOrder, { session });
 
       for (let item of items) {
         await db.collection("products").updateOne(
           { _id: item.productID },
-          { $inc: { stock: -item.quantity } }
+          { $inc: { stock: -item.quantity } }, { session }
         );
 
       }
       await db.collection("cartItems").deleteMany({
         userID: new ObjectId(userId)
-      });
+      }, { session });
       return;
     } catch (error) {
       throw new ApplicationError("Something went Wrong with the database", 500)
@@ -63,7 +67,7 @@ export default class OrderRepository {
             }
           }
         }
-      ]).toArray();
+      ], { session }).toArray();
 
       return items;
 
