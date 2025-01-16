@@ -10,39 +10,46 @@ export default class OrderRepository {
   };
 
   async placeOrder(userId) {
+    // const client = getClient();
+    // const session = client.startSession();
     try {
-      const client = getClient();
-      const session = client.startSession();
 
-      session.startTransaction();
+
+      // session.startTransaction();
 
       const db = getDB();
-      const items = await this.getTotalAmount(userId, session);
+      const items = await this.getTotalAmount(userId);
       // console.log(items);
       const itemsTotal = items.reduce((acc, item) => {
         return acc + item.totalAmount
       }, 0);
       // console.log(itemsTotal);
       const newOrder = new OrderModel(new ObjectId(userId), itemsTotal, new Date())
-      db.collection(this.collection).insertOne(newOrder, { session });
+      db.collection(this.collection).insertOne(newOrder);
 
       for (let item of items) {
         await db.collection("products").updateOne(
           { _id: item.productID },
-          { $inc: { stock: -item.quantity } }, { session }
+          { $inc: { stock: -item.quantity } }
         );
 
       }
       await db.collection("cartItems").deleteMany({
         userID: new ObjectId(userId)
-      }, { session });
+      });
+      //       session.commitTransaction();
+      // session.endSession();
       return;
     } catch (error) {
+      // await session.abortTransaction();
+      // await session.endSession();
+      console.log(error);
+
       throw new ApplicationError("Something went Wrong with the database", 500)
     }
   }
 
-  async getTotalAmount(userId, session) {
+  async getTotalAmount(userId) {
     try {
       const db = getDB();
       const items = await db.collection("cartItems").aggregate([
@@ -67,12 +74,14 @@ export default class OrderRepository {
             }
           }
         }
-      ], { session }).toArray();
+      ]).toArray();
 
       return items;
 
     }
     catch (error) {
+      console.error("Error in getTotalAmount:", error); // Log the full error
+
       throw new ApplicationError("Something went Wrong with the database", 500)
     }
   }
