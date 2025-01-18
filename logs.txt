@@ -39,3 +39,5 @@
 {"level":"info","message":"/api/orders - {}","service":"request-logging"}
 {"level":"info","message":"/api/orders - {}","service":"request-logging"}
 {"level":"info","message":"/api/orders - {}","service":"request-logging"}
+{"level":"info","message":"/api/orders - {}","service":"request-logging"}
+{"level":"info","message":"/api/orders - {}","service":"request-logging"}
