@@ -6,7 +6,7 @@ const UserModel = mongoose.model("User", userSchema)
 
 
 export default class UserRepository {
-  async signup(user) {
+  async signUp(user) {
     try {
       const newUser = new UserModel(user);
       await newUser.save();
@@ -17,7 +17,7 @@ export default class UserRepository {
     }
   }
 
-  async signin(email, password) {
+  async signIn(email, password) {
     try {
       return await UserModel.findOne({ email, password });
 
