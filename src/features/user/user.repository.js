@@ -27,4 +27,13 @@ export default class UserRepository {
 
     }
   }
+
+  async findByEmail(email) {
+    try {
+      return await UserModel.findOne({ email });
+
+    } catch (error) {
+      throw new ApplicationError("Something went wrong with the database.", 500);
+    }
+  }
 }
