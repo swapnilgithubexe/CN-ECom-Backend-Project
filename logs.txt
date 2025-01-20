@@ -41,3 +41,4 @@
 {"level":"info","message":"/api/orders - {}","service":"request-logging"}
 {"level":"info","message":"/api/orders - {}","service":"request-logging"}
 {"level":"info","message":"/api/orders - {}","service":"request-logging"}
+{"level":"info","message":"/api/users/signup - {\"name\":\"John Doe\",\"email\":\"jondoe@gmail.com\",\"password\":\"121212\"}","service":"request-logging"}

@@ -16,7 +16,7 @@ export default class UserController {
       const hashedPassword = await bcrypt.hash(password, 11);
       const user = new UserModel(name, email, hashedPassword, type);
 
-      await this.userRepository.SignUp(user);
+      await this.userRepository.signUp(user);
       res.status(201).json({
         message: "User created successfully",
         userDetails: {
