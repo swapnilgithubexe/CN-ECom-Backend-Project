@@ -60,4 +60,16 @@ export default class UserController {
       return res.status(500).send("Something went wrong");
     }
   }
+
+  async resetPassword(req, res, next) {
+    const { newPassword } = req.body;
+    const UserID = req.userID;
+    const hashedPassword = await bcrypt.hash(newPassword, 12);
+    try {
+
+    } catch (error) {
+      console.error("Error during reset password:", error);
+      return res.status(500).send("Something went wrong");
+    }
+  }
 }
