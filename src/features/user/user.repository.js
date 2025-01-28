@@ -38,17 +38,27 @@ export default class UserRepository {
   }
 
 
+
   async resetPassword(userID, newPassword) {
     try {
+      if (!mongoose.Types.ObjectId.isValid(userID)) {
+        throw new ApplicationError("Invalid user ID", 400);
+      }
+
       let user = await UserModel.findById(userID);
-      if (user) {
-        user.password = newPassword;
-        user.save();
-      } else {
+
+      if (!user) {
         throw new Error("User not found!");
       }
+
+      user.password = newPassword;
+      await user.save();
+
+      return "Password reset successfully";
     } catch (error) {
+      console.error("Error in repository:", error);
       throw new ApplicationError("Something went wrong with the database", 500);
     }
   }
+
 }

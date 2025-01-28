@@ -62,14 +62,24 @@ export default class UserController {
   }
 
   async resetPassword(req, res, next) {
-    const { newPassword } = req.body;
-    const UserID = req.userID;
-    const hashedPassword = await bcrypt.hash(newPassword, 12);
     try {
+      const { newPassword } = req.body;
+      const UserID = req.userID;
+      console.log(newPassword);
 
+
+      if (!UserID || !newPassword) {
+        return res.status(400).send("Invalid input");
+      }
+
+      const hashedPassword = await bcrypt.hash(newPassword, 12);
+      const result = await this.userRepository.resetPassword(UserID, hashedPassword);
+
+      res.status(200).send(result); // Return success message
     } catch (error) {
       console.error("Error during reset password:", error);
       return res.status(500).send("Something went wrong");
     }
   }
+
 }
