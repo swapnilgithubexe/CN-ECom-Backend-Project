@@ -1,6 +1,6 @@
 import mongoose, { mongo } from "mongoose";
 
-export const reviewSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
   product: {
     type: mongoose.Schema.Types.ObjectId, ref: "Product"
   },
@@ -9,4 +9,6 @@ export const reviewSchema = new mongoose.Schema({
     ref: "User"
   },
   rating: { type: Number }
-})
+});
+
+export default reviewSchema;
