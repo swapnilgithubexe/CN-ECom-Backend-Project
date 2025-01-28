@@ -7,5 +7,10 @@ export const productSchema = new mongoose.Schema({
   category: String,
   price: Number,
   inStock: Number,
-  sizes: { type: String, enum: ["L", "XL", "XXL"] }
-})
+  sizes: { type: String, enum: ["L", "XL", "XXL"] },
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId, ref: "Review"
+    }
+  ]
+});
