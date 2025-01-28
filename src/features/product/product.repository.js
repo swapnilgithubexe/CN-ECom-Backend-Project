@@ -107,26 +107,25 @@ export default class ProductRepository {
   //Second approach and more optimized
   async rate(userID, productID, rating) {
     try {
-      const db = getDB();
-      const collection = db.collection(this.collection);
+      const product = await ProductModel.findById(productID);
+      if (!product) {
+        throw new Error("Product not found")
+      }
 
-      const productObjectId = new ObjectId(productID);
-      const userObjectId = new ObjectId(userID);
-      //Below are atomic operations i.e both will either execute side by side or.
-      //1.Upadte the existing rating
-      await collection.updateOne({
-        _id: productObjectId
-      }, {
-        $pull: { ratings: { userID: userObjectId } }
-      })
+      const userReview = await ReviewModel.findOne({ product: new ObjectId(productID), user: new ObjectId(userID) });
+      if (userReview) {
+        userReview.rating = rating;
+        await userReview.save();
+      } else {
+        const newReview = new ReviewModel({
+          product: new ObjectId(productID),
+          user: new ObjectId(userID),
+          rating: rating
+        })
+        await newReview.save();
+      }
 
-      //2. Update if found
-      await collection.updateOne(
-        { _id: productObjectId },
-        {
-          $push: { ratings: { userID: userObjectId, rating } },
-        }
-      );
+
     } catch (error) {
       console.error(error.message);
       throw new ApplicationError("Something is wrong with the database", 500);
