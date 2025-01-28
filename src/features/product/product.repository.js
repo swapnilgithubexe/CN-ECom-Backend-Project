@@ -1,6 +1,10 @@
 import { ObjectId } from "mongodb";
 import { getDB } from "../../config/mongodb.js";
 import { ApplicationError } from "../../error/applicationError.js";
+import mongoose from "mongoose";
+import productSchema from "./product.schema.js";
+
+const ProductModel = mongoose.model("Product", productSchema);
 
 export default class ProductRepository {
   constructor() {

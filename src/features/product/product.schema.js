@@ -1,9 +1,18 @@
 import mongoose from "mongoose";
 
-export const productSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
   name: { type: String },
   desc: String,
-  imageURL: URL,
+  imageURL: {
+    type: String,
+    required: true,
+    validate: {
+      validator: function (v) {
+        return /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i.test(v);
+      },
+      message: "Invalid URL format for image!",
+    },
+  },
   category: String,
   price: Number,
   inStock: Number,
@@ -14,3 +23,5 @@ export const productSchema = new mongoose.Schema({
     }
   ]
 });
+
+export default productSchema;

@@ -8,5 +8,5 @@ export const reviewSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   },
-  rating: Number
+  rating: { type: Number }
 })
