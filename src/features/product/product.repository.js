@@ -27,8 +27,6 @@ export default class ProductRepository {
 
   async getAll() {
     try {
-      console.log("Call from controller to repo");
-
       const products = await ProductModel.find();
 
       return products;

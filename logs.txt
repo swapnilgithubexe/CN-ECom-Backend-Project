@@ -65,3 +65,7 @@
 {"level":"info","message":"/api/products - {}","service":"request-logging"}
 {"level":"info","message":"/api/products - {}","service":"request-logging"}
 {"level":"info","message":"/api/products - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":5}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"677307ab49b90c491bb65d61\",\"rating\":5}","service":"request-logging"}
+{"level":"info","message":"/api/products - {}","service":"request-logging"}
+{"level":"info","message":"/api/products - {}","service":"request-logging"}
