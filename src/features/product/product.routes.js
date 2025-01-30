@@ -7,7 +7,9 @@ const productController = new ProductController();
 const router = express.Router();
 
 // Define the routes under '/products'
-router.get("/", productController.getAllProducts); // This will now be '/products'
+router.get("/", (req, res) => {
+  productController.getAllProducts(req, res)
+}); // This will now be '/products'
 router.post("/", uploadFile.single("imageUrl"), (req, res) => {
   productController.addProduct(req, res);
 }); // '/products'

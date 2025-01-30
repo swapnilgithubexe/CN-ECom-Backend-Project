@@ -27,10 +27,11 @@ export default class ProductRepository {
 
   async getAll() {
     try {
-      const db = getDB();
-      const collection = db.collection(this.collection);
+      console.log("Call from controller to repo");
 
-      return await collection.find();
+      const products = await ProductModel.find();
+
+      return products;
     } catch (error) {
       throw new ApplicationError("Something is wrong with the database", 500);
     }

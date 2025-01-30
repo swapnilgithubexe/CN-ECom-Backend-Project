@@ -8,7 +8,7 @@ export default class ProductController {
   }
   async getAllProducts(req, res) {
     try {
-      const products = this.productRepository.GetAll();
+      const products = await this.productRepository.getAll();
       res.status(200).send(products);
     } catch (error) {
       throw new ApplicationError("Something is wrong with the database", 500);
