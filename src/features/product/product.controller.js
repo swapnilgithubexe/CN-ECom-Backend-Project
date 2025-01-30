@@ -16,11 +16,25 @@ export default class ProductController {
   }
 
   async addProduct(req, res) {
-    const { name, price, sizes } = req.body;
-    const newProduct = new ProductModel(name, null, parseFloat(price),
-      req.file.filename, null, sizes.split(","));
-    const newRecord = await this.productRepository.add(newProduct);
-    res.status(201).send(newRecord);
+    try {
+      const { name, description, price, category, sizes, inStock, reviews, categories } = req.body;
+
+      const newProduct = new ProductModel({
+        name, description, price: parseFloat(price),
+        category, sizes, inStock: parseInt(inStock, 10),
+        reviews: reviews || [],
+        categories: categories
+      });
+
+      const newRecord = await this.productRepository.add(newProduct);
+
+      res.status(201).send(newRecord);
+    } catch (error) {
+      console.log("Error adding product:", error);
+      res.status(500).send({ error: "Failed to add product. Please try again later." });
+
+
+    }
   }
 
   async rateProduct(req, res, next) {

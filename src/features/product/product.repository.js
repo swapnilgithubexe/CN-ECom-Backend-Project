@@ -4,23 +4,30 @@ import { ApplicationError } from "../../error/applicationError.js";
 import mongoose from "mongoose";
 import productSchema from "./product.schema.js";
 import reviewSchema from "./review.schema.js";
+import categorySchema from "./category.schema.js";
 
 const ProductModel = mongoose.model("Product", productSchema);
 const ReviewModel = mongoose.model("Reviews", reviewSchema);
+const CategoryModel = mongoose.model("Category", categorySchema);
 
 export default class ProductRepository {
   constructor() {
     this.collection = "products";
   }
-  async add(newProduct) {
+  async add(productData) {
     try {
-      const db = getDB();
+      const newProduct = new ProductModel(productData);
+      const savedProduct = await newProduct.save();
 
-      const collection = db.collection(this.collection);
+      await CategoryModel.updateMany({
+        _id: { $in: productData.categories }
+      }, {
+        $push: { products: new ObjectId(savedProduct._id) }
+      });
 
-      await collection.insertOne(newProduct);
-      return newProduct;
+      return savedProduct;
     } catch (error) {
+      console.error("Error in add method:", error);
       throw new ApplicationError("Something is wrong with the database", 500);
     }
   }
