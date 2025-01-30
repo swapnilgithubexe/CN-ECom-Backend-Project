@@ -13,7 +13,10 @@ const productSchema = new mongoose.Schema({
       message: "Invalid URL format for image!",
     },
   },
-  category: String,
+  categories: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category"
+  }],
   price: Number,
   inStock: Number,
   sizes: { type: String, enum: ["L", "XL", "XXL"] },
