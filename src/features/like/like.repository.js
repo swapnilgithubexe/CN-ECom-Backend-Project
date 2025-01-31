@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { likeSchema } from "./like.schema.js";
 import { ApplicationError } from "../../error/applicationError.js"
-const LikeModel = mongoose.Schema("Like", likeSchema)
+const LikeModel = mongoose.model("Like", likeSchema)
 export class LikeRepository {
 
 

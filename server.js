@@ -39,6 +39,7 @@ import { ApplicationError } from "./src/error/applicationError.js";
 // import { mongodbconnection } from "./src/config/mongodb.js";
 import orderRouter from "./src/features/order/order.routes.js";
 import { connectDatabase } from "./src/config/mongooseConfig.js";
+import likeRouter from "./src/features/like/like.router.js";
 
 server.use(loggerMiddleware)
 // Mount productRouter on '/products'
@@ -46,6 +47,7 @@ server.use("/api/products", jwtAuth, productRouter);
 server.use("/api/users", userRouter);
 server.use("/api/cartItems", jwtAuth, cartRouter);
 server.use("/api/orders", jwtAuth, orderRouter);
+server.use("/api/like", jwtAuth, likeRouter);
 
 server.get("/", (req, res) => {
   res.send("Welcome Guys!");
