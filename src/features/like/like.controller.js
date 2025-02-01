@@ -26,4 +26,17 @@ export class LikeController {
 
     }
   }
+
+  async getLikes(req, res, next) {
+    try {
+      const { id, type } = req.query;
+
+      const likes = await this.likeRepository.getLikes(type, id);
+
+      return res.status(200).send(likes);
+    } catch (error) {
+      console.error("Error in the getLikes function", error);
+      res.status(500).send({ message: "Error fetching likes", error: error.message });
+    }
+  }
 }

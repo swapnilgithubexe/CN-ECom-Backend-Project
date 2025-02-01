@@ -39,7 +39,7 @@ import { ApplicationError } from "./src/error/applicationError.js";
 // import { mongodbconnection } from "./src/config/mongodb.js";
 import orderRouter from "./src/features/order/order.routes.js";
 import { connectDatabase } from "./src/config/mongooseConfig.js";
-import likeRouter from "./src/features/like/like.router.js";
+import likeRouter from "./src/features/like/like.routes.js";
 
 server.use(loggerMiddleware)
 // Mount productRouter on '/products'
