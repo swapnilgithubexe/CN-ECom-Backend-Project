@@ -97,3 +97,6 @@
 {"level":"info","message":"/api/like?id=679bcecae565f89eff37ccb8&type=Product - {}","service":"request-logging"}
 {"level":"info","message":"/api/like?id=679bcecae565f89eff37ccb8&type=Product - {}","service":"request-logging"}
 {"level":"info","message":"/api/like?id=679bcecae565f89eff37ccb8&type=Product - {}","service":"request-logging"}
+{"level":"info","message":"/api/like - {\"type\":\"Product\",\"id\":\"679bcecae565f89eff37ccb8\"}","service":"request-logging"}
+{"level":"info","message":"/api/like - {\"type\":\"Product\",\"id\":\"679bcecae565f89eff37ccb8\"}","service":"request-logging"}
+{"level":"info","message":"/api/like - {\"type\":\"Product\",\"id\":\"679bcecae565f89eff37ccb8\"}","service":"request-logging"}

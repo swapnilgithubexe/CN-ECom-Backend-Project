@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
 
 export const likeSchema = new mongoose.Schema({
   user: {
@@ -13,4 +13,10 @@ export const likeSchema = new mongoose.Schema({
     type: String,
     enum: ["Product", "Category"]
   }
+}).pre("save", (next) => {
+  console.log("New like has been added");
+  next();
+}).post("save", (doc) => {
+  console.log("Like is saved", doc);
+
 });
