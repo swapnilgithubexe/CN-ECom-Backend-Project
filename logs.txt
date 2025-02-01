@@ -100,3 +100,5 @@
 {"level":"info","message":"/api/like - {\"type\":\"Product\",\"id\":\"679bcecae565f89eff37ccb8\"}","service":"request-logging"}
 {"level":"info","message":"/api/like - {\"type\":\"Product\",\"id\":\"679bcecae565f89eff37ccb8\"}","service":"request-logging"}
 {"level":"info","message":"/api/like - {\"type\":\"Product\",\"id\":\"679bcecae565f89eff37ccb8\"}","service":"request-logging"}
+{"level":"info","message":"/api/like - {\"type\":\"Product\",\"id\":\"679bcecae565f89eff37ccb8\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signup - {\"name\":\"Swapnil Dutta\",\"email\":\"swapnildutta2002@gmail.com\",\"password\":\"Sw@pnil123\",\"type\":\"seller\"}","service":"request-logging"}
